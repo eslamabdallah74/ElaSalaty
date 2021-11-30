@@ -63,6 +63,7 @@ body {
   color: #212529;
   text-align: left;
   background-color: #f8fafc;
+  background-image: url('https://media3.giphy.com/media/TxVVB6PfWMjE4/giphy.gif?cid=ecf05e47v4rnlontcte0c1zrtmmi6nj4pnt4mtp3ezhnrpu4&rid=giphy.gif&ct=g');
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -10018,4 +10019,12 @@ h3 {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+
+/* Home */
+.background {
+    background-color: #bdc3c766;
+    padding: 20px 0;
+    color: white;
 }
