@@ -22,7 +22,7 @@ class Prayers extends Component
     public $oldExpBar;
     public function mount()
     {
-        $this->prayers = ModelsPrayers::all();
+        $this->prayers = ModelsPrayers::OrderBy('id','desc')->get();
     }
 
     public function Prayed()

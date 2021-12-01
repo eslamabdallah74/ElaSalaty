@@ -5,11 +5,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>اضغط علي كل صلاة تصليها </h1>
+                    <h1 class="center">اضغط علي كل صلاة تصليها </h1>
                 </div>
             </div>
-            <!-- Start -->
-                <livewire:prayers />
         </div>
+       <!-- Start -->
+        <livewire:prayers />
+        <livewire:prograess-bar />
     </div>
 @endsection
