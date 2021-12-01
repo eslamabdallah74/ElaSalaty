@@ -9,10 +9,7 @@ use App\Models\Prayers as ModelsPrayers;
 
 class Prayers extends Component
 {
-    public function render()
-    {
-        return view('livewire.prayers');
-    }
+
 
     public $prayers;
     public $prayersName;
@@ -20,9 +17,14 @@ class Prayers extends Component
     public $level;
     public $ExpBar;
     public $oldExpBar;
+
+    public $GetExp;
+
     public function mount()
     {
         $this->prayers = ModelsPrayers::OrderBy('id','desc')->get();
+        $this->GetExp = Exp_bar::where('user_id', auth()->user()->id)->get('exp')->first();
+        $this->level  = Exp_bar::where('user_id', auth()->user()->id)->get('level')->first();
     }
 
     public function Prayed()
@@ -43,19 +45,29 @@ class Prayers extends Component
              $UpdateExp = Exp_bar::where('user_id', auth()->user()->id)->get()->first()->update([
                  'exp' =>  DB::raw('exp+5')
              ]);
-
-             $GetExp= Exp_bar::where('user_id', auth()->user()->id)->get()->first();
+                // Here we update the (this exp so we can live render it)
+             $this->GetExp = Exp_bar::where('user_id', auth()->user()->id)->get()->first();
 
             //  Level up
-             if($GetExp->exp >= 100)
+             if($this->GetExp->exp >= 100)
              {
                 $UpdateExp = Exp_bar::where('user_id', auth()->user()->id)->get()->first()->update([
                     'exp'   =>  0,
                     'level' => DB::raw('level+1')
                 ]);
+                // Update on level up
+                $this->GetExp = Exp_bar::where('user_id', auth()->user()->id)->get()->first();
+                $this->level = Exp_bar::where('user_id', auth()->user()->id)->get()->first();
+
              }
+            // Here we update the (this level so we can live render it)
+            $this->level = Exp_bar::where('user_id', auth()->user()->id)->get()->first();
         }
 
 
+    }
+    public function render()
+    {
+        return view('livewire.prayers');
     }
 }

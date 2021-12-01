@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @auth
     <div class="background">
         <div class="container">
             <div class="row">
@@ -10,7 +11,7 @@
             </div>
         </div>
        <!-- Start -->
-        <livewire:prayers />
-        <livewire:prograess-bar />
+         <livewire:prayers />
     </div>
+    @endauth
 @endsection

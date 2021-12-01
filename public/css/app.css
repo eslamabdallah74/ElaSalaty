@@ -10034,10 +10034,25 @@ h3 {
     color: #000;
     border: 3px solid #eee;
 }
-
+.btn-light-moon:focus {
+    background: rgb(71,255,87);
+    background: linear-gradient(90deg, rgba(71,255,87,1) 0%, rgba(81,143,37,1) 50%, rgba(17,125,57,1) 100%);
+    color: white;
+    border: 0px;
+}
 h1 {
     text-align: center;
     background-color: #2a233c;
     padding: 20px 0;
     border-radius: 20px;
+}
+
+.level {
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 0 4px;
+    background-color: #38c172  ;
+    color: black;
 }
