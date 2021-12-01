@@ -10,6 +10,5 @@ class Prayers extends Model
     use HasFactory;
     protected $fillable = [
         'pray_name',
-        'pray_count',
     ];
 }

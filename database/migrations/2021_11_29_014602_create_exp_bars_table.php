@@ -13,19 +13,15 @@ class CreateExpBarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('exp_bar', function (Blueprint $table) {
+        Schema::create('exp_bars', function (Blueprint $table) {
             $table->id();
 
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')
             ->references('id')->on('users');
 
-            $table->bigInteger('prayer_id')->unsigned();
-            $table->foreign('prayer_id')
-            ->references('id')->on('prayers');
-
-            $table->integer('exp');
-            $table->integer('level');
+            $table->integer('exp')->default(0);
+            $table->integer('level')->default(0);
             $table->timestamps();
         });
     }
