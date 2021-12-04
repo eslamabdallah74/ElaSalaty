@@ -10,6 +10,7 @@
             </div>
             @endforeach
         </div>
+
     </div>
     <div class="container">
         <div class="row">
@@ -17,6 +18,7 @@
                 <div class="mt-5 progress">
                     <div class="progress-bar bg-success"  role="progressbar" style="width: {{ $GetExp->exp }}%; color:black;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"> {{ $GetExp->exp }} Exp</div>
                 </div>
+
             </div>
         </div>
     </div>

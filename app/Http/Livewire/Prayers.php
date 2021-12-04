@@ -22,25 +22,27 @@ class Prayers extends Component
 
     public function mount()
     {
+        // Make new exp row for new user
+        $IsExpExists = Exp_bar::where('user_id', auth()->user()->id)->first();
+        if ($IsExpExists === null) {
+            // Start New Exp Road
+            $ExpBar = new Exp_bar();
+            $ExpBar->user_id    = auth()->user()->id;
+            $ExpBar->exp        = 0;
+            $ExpBar->level      = 0;
+            $ExpBar->save();
+        }
+        // Assgin Values
         $this->prayers = ModelsPrayers::OrderBy('id','desc')->get();
         $this->GetExp = Exp_bar::where('user_id', auth()->user()->id)->get('exp')->first();
         $this->level  = Exp_bar::where('user_id', auth()->user()->id)->get('level')->first();
+
     }
 
     public function Prayed()
     {
         auth()->check();
-        $IsExpExists = Exp_bar::where('user_id', auth()->user()->id)->first();
-        if($IsExpExists === null)
-        {
-            // Start New Exp Road
-            $ExpBar = new Exp_bar();
-            $ExpBar->user_id    = auth()->user()->id;
-            $ExpBar->exp        = 5;
-            $ExpBar->level      = 0;
-            $ExpBar->save();
 
-        } else {
             // Add Exp
              $UpdateExp = Exp_bar::where('user_id', auth()->user()->id)->get()->first()->update([
                  'exp' =>  DB::raw('exp+5')
@@ -62,7 +64,6 @@ class Prayers extends Component
              }
             // Here we update the (this level so we can live render it)
             $this->level = Exp_bar::where('user_id', auth()->user()->id)->get()->first();
-        }
 
 
     }
