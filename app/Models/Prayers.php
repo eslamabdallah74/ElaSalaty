@@ -10,5 +10,8 @@ class Prayers extends Model
     use HasFactory;
     protected $fillable = [
         'pray_name',
+        'clicked'
     ];
+
+
 }

@@ -16,6 +16,7 @@ class CreatePrayersTable extends Migration
         Schema::create('prayers', function (Blueprint $table) {
             $table->id();
             $table->string('pray_name');
+            $table->boolean('clicked')->default('0');
             $table->timestamps();
         });
     }
