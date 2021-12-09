@@ -6,11 +6,16 @@
             @foreach ($prayers as $prayer )
             <div class="py-2 col-md-2">
                 <div class="btn-contain">
-		               <button
-                        @if ($prayer->clicked === 1)
-                            disabled
-                        @endif
-                        wire:click='Prayed({{$prayer->id}})'  class="col btn btn-light-moon"}> {{ $prayer->pray_name  }} </button>
+                        <button
+                         wire:click='Prayed({{$prayer->id}})'
+                         @if ($prayer->clicked === 1)
+                         class="bg-blue-500 p-4 text-gray-50 rounded-md opacity-50"
+                         @else
+                         class="bg-blue-500 p-4 text-gray-50 rounded-md"
+                         @endif
+                         >
+                        {{ $prayer->pray_name }}
+                        </button>
                 </div>
             </div>
             @endforeach
@@ -20,8 +25,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="mt-5 progress">
-                    <div class="progress-bar bg-success"  role="progressbar" style="width: {{ $GetExp->exp }}%; color:black;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"> {{ $GetExp->exp }} Exp</div>
+                <div class="mt-5 progress" style="height: 40px;">
+                    <div class="progress-bar bg-success py-2"  role="progressbar" style="width: {{ $GetExp->exp }}%; color:white;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"> {{ $GetExp->exp }} Exp</div>
                 </div>
 
             </div>

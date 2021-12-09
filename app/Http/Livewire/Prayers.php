@@ -76,6 +76,11 @@ class Prayers extends Component
            $this->level    = Exp_bar::where('user_id', auth()->user()->id)->get()->first();
         } else { // you clicked the pray
             $this->failed = 'You prayed it already';
+                // Update on level up
+                $this->GetExp = Exp_bar::where('user_id', auth()->user()->id)->get()->first();
+                $this->level = Exp_bar::where('user_id', auth()->user()->id)->get()->first();
+               // Here we update the (this level so we can live render it)
+                $this->level    = Exp_bar::where('user_id', auth()->user()->id)->get()->first();
             return $this->failed;
         }
 
