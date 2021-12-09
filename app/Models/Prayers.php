@@ -13,5 +13,4 @@ class Prayers extends Model
         'clicked'
     ];
 
-
 }

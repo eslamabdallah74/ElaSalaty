@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Prayers;
 use Illuminate\Console\Command;
 
 class RestPrayButton extends Command
@@ -11,14 +12,14 @@ class RestPrayButton extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'rest:pray';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Rest pray button to 0 every 24H';
 
     /**
      * Create a new command instance.
@@ -35,8 +36,17 @@ class RestPrayButton extends Command
      *
      * @return int
      */
+    // Rest pray button
     public function handle()
     {
-        return Command::SUCCESS;
+
+        $prayers =  Prayers::where('clicked' , 1)->get();
+        foreach ($prayers as $prayer)
+        {
+            $prayer->update([
+                'clicked' => 0,
+            ]);
+        }
+        // return Command::SUCCESS;
     }
 }
