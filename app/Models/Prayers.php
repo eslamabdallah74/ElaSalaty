@@ -10,7 +10,11 @@ class Prayers extends Model
     use HasFactory;
     protected $fillable = [
         'pray_name',
-        'clicked'
     ];
+
+    public function Clicked()
+    {
+        return $this->hasMany(Clicked::class, 'prayer_id');
+    }
 
 }

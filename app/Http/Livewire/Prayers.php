@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Clicked;
 use App\Models\Exp_bar;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
@@ -47,16 +48,34 @@ class Prayers extends Component
     {
         auth()->check();
         // if button didn't been clicked in 24h you can click it
-        if(ModelsPrayers::where('id' , $prayer_id)->value('clicked') === 0)
+
+        $test = Clicked::where('id' , $prayer_id)->where('user_id', auth()->user()->id)->get();
+        // dd($test);
+        if(Clicked::where('user_id', auth()->user()->id)->where('prayer_id', $prayer_id)->first() === null
+        || Clicked::where('user_id', auth()->user()->id)->where('prayer_id', $prayer_id)->value('clicked') === 0 )
         {
              // Add Exp and clicked
              $UpdateExp = Exp_bar::where('user_id', auth()->user()->id)->get()->first()->update([
                 'exp'      =>  DB::raw('exp+5'),
             ]);
            // button Clicked
-            $Clicked = ModelsPrayers::where('id' , $prayer_id)->first()->update([
-               'clicked'  => '1',
-            ]);
+           if(Clicked::where('user_id', auth()->user()->id)->where('prayer_id', $prayer_id)->value('clicked') === 0)
+           {
+            $Clicked = Clicked::where('user_id', auth()->user()->id)->where('prayer_id', $prayer_id)->first()->update([
+                'clicked'  => '1',
+                'user_id'    => auth()->user()->id,
+                'prayer_id'  => $prayer_id,
+                'created_at' => now(),
+             ]);
+           } else {
+            $Clicked = Clicked::insert([
+                'clicked'    => '1',
+                'user_id'    => auth()->user()->id,
+                'prayer_id'  => $prayer_id,
+                'created_at' => now(),
+             ]);
+           }
+
                // Here we update the (this exp so we can live render it)
             $this->GetExp = Exp_bar::where('user_id', auth()->user()->id)->get()->first();
 

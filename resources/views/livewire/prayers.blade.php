@@ -8,11 +8,7 @@
                 <div class="btn-contain">
                         <a
                          wire:click='Prayed({{$prayer->id}})'
-                         @if ($prayer->clicked === 1)
-                         class="bg-green-400 p-4 text-gray-50 rounded-md hover:text-gray-200 opacity-50 cursor-not-allowed"
-                         @else
                          class="bg-blue-500 p-4 text-gray-50 rounded-md hover:text-gray-200 cursor-pointer"
-                         @endif
                          >
                         {{ $prayer->pray_name }}
                         </a>
