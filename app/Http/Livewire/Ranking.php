@@ -9,21 +9,20 @@ use Livewire\WithPagination;
 class Ranking extends Component
 {
     use WithPagination;
-
-    public $ranking;
     protected $paginationTheme = 'bootstrap';
 
-    public function mount()
-    {
-        $this->ranking = Exp_bar::orderBy('level', 'DESC')
-        ->orderBy('exp', 'DESC')
-        ->paginate(10)
-        ->items();
-        // dd($this->ranking);
-    }
+
 
     public function render()
     {
-        return view('livewire.ranking');
+        $ranking = Exp_bar::orderBy('level', 'DESC')
+        ->orderBy('exp', 'DESC')
+        ->paginate(10);
+
+        $order = $ranking->firstItem();
+        return view('livewire.ranking',[
+            'ranking' => $ranking,
+            'order'   => $order
+        ]);
     }
 }

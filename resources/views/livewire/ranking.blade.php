@@ -20,7 +20,7 @@
                 Level
               </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-              E xperience points
+              Experience points
               </th>
             </tr>
           </thead>
@@ -32,7 +32,7 @@
                 <div class="flex items-center">
                   <div class="ml-4">
                     <div class="text-sm font-medium text-gray-900">
-                      #{{ $index + 1 }}
+                      #{{ $order++ }}
                     </div>
                   </div>
                 </div>
@@ -40,7 +40,17 @@
               <td class="py-4 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">
+
+                    <div
+                    @auth
+                        @if ($rank->users->id === auth()->user()->id)
+                        class="text-sm  text-red-400 font-bold capitalize">
+                        @else
+                        class="text-sm font-medium text-gray-900 capitalize">
+                        @endif
+                    @else
+                       class="text-sm font-medium text-gray-900 capitalize">
+                    @endauth
                       {{ $rank->users->name }}
                     </div>
                   </div>
@@ -48,7 +58,7 @@
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="text-sm text-gray-900">
-                    @if ($rank->users->gender === true)
+                    @if ($rank->users->gender === 1)
                         Male
                     @else
                         Female
@@ -57,20 +67,21 @@
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                  Active
+                {{ $rank->level }}
                 </span>
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                Admin
+                {{ $rank->exp }}
               </td>
             </tr>
 
             <!-- More people... -->
           </tbody>
           @endforeach
-            <div>
-            </div>
         </table>
+        <div>
+            {{ $ranking->links() }}
+            </div>
       </div>
     </div>
   </div>

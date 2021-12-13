@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\PrayerUser as Clicked;
+use App\Models\UserPrayer as Clicked;
 use App\Models\Exp_bar;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
