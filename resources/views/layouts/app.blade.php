@@ -35,9 +35,20 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Keep Track</a>
+              <a href="{{ url('/') }}"
+                @if(Request::is('/'))
+                class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                @else
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                @endif
+                aria-current="page">Keep Track</a>
 
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ranking</a>
+              <a href="{{ url('/ranking') }}"
+                 @if(Request::is('ranking'))
+                 class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                 @else
+                 class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                 @endif>Ranking</a>
             </div>
           </div>
         </div>

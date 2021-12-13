@@ -17,7 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('auth');
 
-Route::get('/ranking')
+Route::get('/ranking' , function (){
+    return view('ranking');
+});
 
 Auth::routes();
 

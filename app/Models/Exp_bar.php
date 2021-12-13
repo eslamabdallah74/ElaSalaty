@@ -12,4 +12,9 @@ class Exp_bar extends Model
         'exp',
         'level',
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class,"user_id","id");
+    }
 }

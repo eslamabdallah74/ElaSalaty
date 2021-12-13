@@ -3,6 +3,6 @@
 @section('content')
     <div class="background">
        <!-- Start -->
-         <livewire:prayers />
+         <livewire:ranking />
     </div>
 @endsection
