@@ -41,6 +41,9 @@ class Prayers extends Component
         $this->GetExp  = Exp_bar::where('user_id', auth()->user()->id)->get('exp')->first();
         $this->level   = Exp_bar::where('user_id', auth()->user()->id)->get('level')->first();
 
+        // $GetUsers  = ModelsPrayers::has('UserPrayer')->first();
+        // $getUserClick = $GetUsers->UserPrayer->where('user_id', auth()->user()->id)->first()->clicked;
+        // dd($getUserClick);
 
     }
 

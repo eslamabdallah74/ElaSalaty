@@ -11,4 +11,5 @@ class UserPrayer extends Model
     protected $fillable = [
         'clicked',
     ];
+
 }

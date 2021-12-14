@@ -6,12 +6,22 @@
             @foreach ($prayers as $prayer )
             <div class="py-2 col-md-2">
                 <div class="btn-contain">
+              <!-- Check if the user is new or not if it's new we will show Regular CSS If not we will get Clicked data-->
                         <button
                          wire:click='Prayed({{$prayer->id}})'
-                         class="bg-blue-500 p-4 text-gray-50 rounded-md hover:text-gray-200 cursor-pointer"
+                        @if ($prayer->UserPrayer->where('user_id', auth()->user()->id)->first())
+                            @if ($prayer->UserPrayer->where('user_id', auth()->user()->id)->first()->clicked === 1)
+                              class="bg-green-400 p-4 text-gray-50 rounded-md hover:text-gray-200 opacity-50 cursor-not-allowed"
+                            disabled
+                            @else
+                                class="bg-blue-500 p-4 text-gray-50 rounded-md hover:text-gray-200 cursor-pointer"
+                            @endif
+                        @else
+                            class="bg-blue-500 p-4 text-gray-50 rounded-md hover:text-gray-200 cursor-pointer"
+                        @endif
                          >
                         {{ $prayer->pray_name }}
-                        </button>
+                        </buttonp>
                 </div>
             </div>
             @endforeach

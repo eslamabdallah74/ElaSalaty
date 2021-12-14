@@ -12,9 +12,9 @@ class Prayers extends Model
         'pray_name',
     ];
 
-    public function Clicked()
+    public function UserPrayer()
     {
-        return $this->hasMany(Clicked::class, 'prayer_id');
+        return $this->hasMany(UserPrayer::class, 'prayer_id','id');
     }
 
 }
