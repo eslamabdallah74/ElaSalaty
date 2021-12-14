@@ -6,12 +6,12 @@
             @foreach ($prayers as $prayer )
             <div class="py-2 col-md-2">
                 <div class="btn-contain">
-                        <a
+                        <button
                          wire:click='Prayed({{$prayer->id}})'
                          class="bg-blue-500 p-4 text-gray-50 rounded-md hover:text-gray-200 cursor-pointer"
                          >
                         {{ $prayer->pray_name }}
-                        </a>
+                        </button>
                 </div>
             </div>
             @endforeach

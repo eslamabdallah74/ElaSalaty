@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Prayers;
+use App\Models\UserPrayer as Prayers;
 use Illuminate\Console\Command;
 
 class RestPrayButton extends Command

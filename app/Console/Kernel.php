@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
-         $schedule->command('rest:pray')->dailyAt('08:00');
+         $schedule->command('rest:pray')->everyMinute();
 
     }
 
