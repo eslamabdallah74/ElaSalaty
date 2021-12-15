@@ -33,6 +33,50 @@
           <div class="flex-shrink-0">
             <img class="h-8 w-8" src="{{asset('img/praying.png')}}" alt="Workflow">
           </div>
+          <!-- Dropdown -->
+          <div class="dropdown mx-4 md:hidden">
+                <button  class="btn btn-secondary dropdown-toggle bg-gray-900" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Home
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{{ url('/') }}">Keep Track</a>
+                    <a class="dropdown-item" href="{{ url('/ranking') }}">Ranking</a>
+                    <a class="dropdown-item" href="#">
+                           <!-- Authentication Links -->
+                           @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </a>
+                </div>
+            </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
@@ -58,7 +102,7 @@
             <!-- Profile dropdown -->
             <div class="ml-3 relative">
               <div>
-              <ul class="ml-auto navbar-nav text-gray-50 grid grid-cols-2">
+              <ul class="grid ml-auto navbar-nav text-gray-50  grid-cols-2">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -93,7 +137,6 @@
                         @endguest
                     </ul>
               </div>
-
             </div>
           </div>
         </div>
@@ -115,7 +158,19 @@
   </main>
 </div>
 
-
+<!-- Footer -->
+<!-- component -->
+<footer class="footer bg-white relative pt-1 border-b-2 border-gray-900">
+    <div class="container mx-auto px-6">
+        <div class="mt-16 border-t-2 border-gray-300 flex flex-col items-center">
+            <div class="sm:w-2/3 text-center py-6">
+                <p class="text-sm text-gray-900 font-bold mb-2">
+                    © 2021 Designed by <a target="_blank" href="https://github.com/eslamabdallah74">Eslam Abdallah</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
 
     </div>
     @livewireScripts

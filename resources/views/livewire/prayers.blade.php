@@ -5,7 +5,7 @@
             <div class="py-2 col-md-2"> </div>
             @foreach ($prayers as $prayer )
             <div class="py-2 col-md-2">
-                <div class="btn-contain">
+                <div class="btn-contain text-center">
               <!-- Check if the user is new or not if it's new we will show Regular CSS If not we will get Clicked data-->
                         <button
                          wire:click='Prayed({{$prayer->id}})'
@@ -27,7 +27,7 @@
             @endforeach
         </div>
     </div>
-    <div class="row">
+    <div class="row hidden md:block">
         <div class="col-md-12">
             <h5 class="py-10 text-center" style="color: #ff4d4d;"> {{ $failed }} </h5>
         </div>
@@ -41,13 +41,13 @@
             </div>
         </div>
         <!-- LEVEL -->
-        <div class="row py-6">
-            <div class="col-md-6">
+        <div class="py-6 grid md:grid-cols-2 gap-2  grid-cols-1">
+            <div class="">
                 <div>
                     <img class="rounded-3xl" src="{{asset('img/your_level.svg')}}" alt="level">
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="">
                 <div class="text-8xl rounded-3xl text-center py-4 h-full underline bg-gray-900 text-gray-100">{{ $level->level }}</div>
             </div>
         </div>
