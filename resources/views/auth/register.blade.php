@@ -45,7 +45,6 @@
 
                             <div class="col-md-6">
                                 <select name="gender" class="form-control" aria-label="Default select">
-                                    <option selected>Choose your gender</option>
                                     <option selected value="1">Male</option>
                                     <option value="0">Female</option>
                                 </select>
