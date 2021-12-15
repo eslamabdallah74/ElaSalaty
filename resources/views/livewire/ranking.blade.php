@@ -44,15 +44,17 @@
                   </div>
                 </div>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap">
+              <!-- <td class="px-6 py-4 whitespace-nowrap">
                 <div class="text-sm text-gray-900">
                     @if ($UserRank->users->gender === 1)
+                        <img src="{{asset('img/male.png')}}" alt="male-avatar">
                         Male
                     @else
+                       <img src="{{asset('img/female.png')}}" alt="female-avatar">
                         Female
                     @endif
                </div>
-              </td>
+              </td> -->
               <td class="px-6 py-4 whitespace-nowrap">
                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                 {{ $UserRank->level }}
