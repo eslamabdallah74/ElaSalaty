@@ -44,21 +44,35 @@
                   </div>
                 </div>
               </td>
-              <!-- <td class="px-6 py-4 whitespace-nowrap">
+              <td class="px-6 py-4 whitespace-nowrap">
                 <div class="text-sm text-gray-900">
                     @if ($UserRank->users->gender === 1)
-                        <img src="{{asset('img/male.png')}}" alt="male-avatar">
+                     <img src="{{asset('img/male.png')}}" class="h-8 inline-flex" alt="male-avatar">
                         Male
                     @else
-                       <img src="{{asset('img/female.png')}}" alt="female-avatar">
+                       <img src="{{asset('img/female.png')}}" class="h-8 inline-flex" alt="female-avatar">
                         Female
                     @endif
                </div>
-              </td> -->
+              </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                <!-- level img -->
+                <div class="p-2 inline-flex text-2xl leading-5 font-semibold rounded-full">
+                    @if ($UserRank->level >= 0 && $UserRank->level < 5)
+                        <img src="{{asset('img/LevelUp/stage-1.png')}}" class="h-8" alt="stage-one">
+                    @elseif ($UserRank->level >= 5  && $UserRank->level < 10)
+                        <img src="{{asset('img/LevelUp/stage-2.png')}}" class="h-8" alt="stage-two">
+                    @elseif ($UserRank->level >= 10 && $UserRank->level < 15)
+                        <img src="{{asset('img/LevelUp/stage-3.png')}}" class="h-8" alt="stage-three">
+                    @elseif ($UserRank->level >= 15 && $UserRank->level < 20)
+                        <img src="{{asset('img/LevelUp/stage-4.png')}}" class="h-8" alt="stage-four">
+                    @elseif ($UserRank->level >= 20 )
+                        <img src="{{asset('img/LevelUp/final-stage.png')}}" class="h-8" alt="final-stage">
+                    @endif
+                </div>
+                <div class="p-2 inline-flex text-4xl font-semibold rounded-full bg-yellow-100 text-yellow-900">
                 {{ $UserRank->level }}
-                </span>
+                </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {{ $UserRank->exp }}
@@ -133,16 +147,32 @@
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="text-sm text-gray-900">
                     @if ($rank->users->gender === 1)
+                        <img src="{{asset('img/male.png')}}" class="h-8 inline-flex" alt="male-avatar">
                         Male
                     @else
+                       <img src="{{asset('img/female.png')}}" class="h-8 inline-flex" alt="female-avatar">
                         Female
                     @endif
                </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                <!-- level img -->
+                <div class="p-2 inline-flex text-2xl leading-5 font-semibold rounded-full">
+                    @if ($rank->level >= 0 && $rank->level < 5)
+                        <img src="{{asset('img/LevelUp/stage-1.png')}}" class="h-8" alt="stage-one">
+                    @elseif ($rank->level >= 5  && $rank->level < 10)
+                        <img src="{{asset('img/LevelUp/stage-2.png')}}" class="h-8" alt="stage-two">
+                    @elseif ($rank->level >= 10 && $rank->level < 15)
+                        <img src="{{asset('img/LevelUp/stage-3.png')}}" class="h-8" alt="stage-three">
+                    @elseif ($rank->level >= 15 && $rank->level < 20)
+                        <img src="{{asset('img/LevelUp/stage-4.png')}}" class="h-8" alt="stage-four">
+                    @elseif ($rank->level >= 20 )
+                        <img src="{{asset('img/LevelUp/final-stage.png')}}" class="h-8" alt="final-stage">
+                    @endif
+                </div>
+                <div class="p-2 inline-flex text-4xl font-semibold rounded-full bg-yellow-100 text-yellow-900">
                 {{ $rank->level }}
-                </span>
+                </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {{ $rank->exp }}
