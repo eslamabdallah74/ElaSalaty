@@ -17,6 +17,9 @@
         <table class="min-w-full divide-y divide-gray-200 mb-10">
           <thead class="bg-gray-900">
             <tr>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                #Rank
+              </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
                 Name
               </th>
@@ -34,10 +37,18 @@
 
           <tbody class="bg-white divide-y divide-gray-200">
             <tr>
+            <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">
+                      #{{ $userOrder }}
+                    </div>
+                  </div>
+                </div>
+              </td>
               <td class="py-4 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="ml-4">
-
                     <div class="text-sm font-medium text-gray-900 capitalize">
                      {{ $UserRank->users->name }}
                     </div>
@@ -56,6 +67,10 @@
                </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
+                <!-- Level -->
+                <div class="p-2 inline-flex text-4xl font-semibold rounded-full bg-yellow-100 text-yellow-900">
+                {{ $UserRank->level }}
+                </div>
                 <!-- level img -->
                 <div class="p-2 inline-flex text-2xl leading-5 font-semibold rounded-full">
                     @if ($UserRank->level >= 0 && $UserRank->level < 5)
@@ -70,9 +85,7 @@
                         <img src="{{asset('img/LevelUp/final-stage.png')}}" class="h-8" alt="final-stage">
                     @endif
                 </div>
-                <div class="p-2 inline-flex text-4xl font-semibold rounded-full bg-yellow-100 text-yellow-900">
-                {{ $UserRank->level }}
-                </div>
+
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {{ $UserRank->exp }}
@@ -156,6 +169,10 @@
                </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
+                  <!-- Level -->
+                <div class="p-2 inline-flex text-4xl font-semibold rounded-full bg-yellow-100 text-yellow-900">
+                {{ $rank->level }}
+                </div>
                 <!-- level img -->
                 <div class="p-2 inline-flex text-2xl leading-5 font-semibold rounded-full">
                     @if ($rank->level >= 0 && $rank->level < 5)
@@ -169,9 +186,6 @@
                     @elseif ($rank->level >= 20 )
                         <img src="{{asset('img/LevelUp/final-stage.png')}}" class="h-8" alt="final-stage">
                     @endif
-                </div>
-                <div class="p-2 inline-flex text-4xl font-semibold rounded-full bg-yellow-100 text-yellow-900">
-                {{ $rank->level }}
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
