@@ -25,7 +25,6 @@ class Prayers extends Component
     public $failed;
     public function mount()
     {
-
         // Make new exp row for new user
         $IsExpExists = Exp_bar::where('user_id', auth()->user()->id)->first();
         if ($IsExpExists === null) {

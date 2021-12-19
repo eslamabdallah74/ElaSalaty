@@ -164,6 +164,9 @@
 
 <!-- Footer -->
 <!-- component -->
+
+<!-- Don't show footer in Login-Register pages -->
+@if (Request::is('ranking') || Request::is('/'))
 <footer class="footer bg-white relative pt-1 border-b-2 border-gray-900">
     <div class="container mx-auto px-6">
         <div class="mt-16 border-t-2 border-gray-300 flex flex-col items-center">
@@ -175,6 +178,8 @@
         </div>
     </div>
 </footer>
+@endif
+
 
     </div>
     @livewireScripts
