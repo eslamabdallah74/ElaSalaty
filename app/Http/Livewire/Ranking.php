@@ -34,10 +34,13 @@ class Ranking extends Component
         // All ranking Order
         $order = $ranking->firstItem();
 
-        // Auth user Order
-        $collection = collect(Exp_bar::orderBy('level', 'DESC')->orderBy('exp','DESC')->get());
-        $data       = $collection->where('user_id', auth()->user()->id);
-        $this->userOrder      = $data->keys()->first() + 1;
+        if (Auth::user()) {
+                // Auth user Order
+                $collection = collect(Exp_bar::orderBy('level', 'DESC')->orderBy('exp','DESC')->get());
+                $data       = $collection->where('user_id', auth()->user()->id);
+                $this->userOrder      = $data->keys()->first() + 1;
+        }
+
 
         return view('livewire.ranking',[
             'ranking'   => $ranking,
